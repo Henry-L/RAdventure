@@ -1,4 +1,11 @@
 %h1= @message
 
+%body
+  %table{:id => "game_grid"}
+    - (0..@rows).each do |r|
+      %tr
+      - (0..@columns).each do |c|
+        %td{:id => "cell:" + r.to_s + "," + c.to_s,:x => c, :y => r, :onclick => "cmove()"}= r.to_s + "," + c.to_s
 
-
+=javascript_include_tag params[:controller]
+%script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"}
